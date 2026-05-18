@@ -1,57 +1,39 @@
-# SHOW-0-GECI
+# SHOW-0-GECI Bolt Clean
 
-This repository is a handoff package for rebuilding the SHOW-0 desktop lyrics UI in Bolt or v0.
+This is a clean Bolt.new handoff for the SHOW-0 desktop lyrics UI.
 
-Open the app from the repository root. The main preview entry is:
+Main file:
 
-`app/page.tsx`
+`src/desktop-lyrics/desktop-lyrics-app.tsx`
 
-The main desktop lyrics component is:
+Preview entry:
 
-`show0-new-ui/desktop-lyrics-project/desktop-lyrics-app.tsx`
+`src/App.tsx`
 
 ## Scope
 
-Only rebuild or continue the desktop lyrics UI.
+Only rebuild or continue the desktop lyrics UI. Do not build KuGou sync, audio playback, VST, KRC/LRC parsing, or SHOW-0 core logic.
 
-Do not implement:
+## Final UI Rules
 
-- KuGou sync
-- real audio playback
-- VST
-- KRC or LRC parsing
-- SHOW-0 core state machine changes
-
-## Final Size Rules
-
-- visible desktop lyrics frame: `506 x 327 px`
-- icon frame width: `506 px`
-- icon frame stays centered
-- icon frame does not resize with the lyric display area
-- minimum outer window height target: about `107 px`
-- lyric font maximum: `96 px`
-- lyric font minimum: `22 px`
-- lyric area top starts around `35 px`
-- lyric area bottom is around `307 px` at max height
-
-## Layout Rules
-
-- no visible guide lines
-- no green, red, yellow, or blue helper lines
-- first lyric line anchors to top-left
-- second lyric line anchors to bottom-right
-- when height shrinks, the lyric display area and lyric font shrink
-- when width shrinks, do not shrink the font; later use horizontal scrolling
+- visible frame max/base size: `506 x 327 px`
+- minimum height target: about `107 px`
+- toolbar/icon frame width: `506 px`
+- toolbar/icon frame stays centered
+- toolbar/icon frame does not resize with lyrics
+- lyric display area starts around `35 px` from the top
+- lyric display bottom is around `307 px` at full height
+- lyric max font size: `96 px`
+- lyric min font size: `22 px`
+- first lyric line anchors top-left
+- second lyric line anchors bottom-right
+- no visible helper lines
 
 ## Color Rules
 
 - default icon color: `#d8dddd`
-- hover icon color: `#f7ffff`
-- active blue icon color: `#1aa9ff`
+- icon hover color: `#f7ffff`
+- active icon blue: `#1aa9ff`
 - unsung lyric gradient: `#076ca4 -> #0871aa -> #0978b2`
 - sung lyric gradient: `#4ffbff -> #ffffff -> #00ffff`
-- lyric strokes should have a very thin black outline for depth
-
-## Notes For Bolt
-
-Use the current UI as the source of truth. Keep the toolbar/icon row stable, and only allow the lyric display area and lyric font to resize with height changes.
+- lyrics use a very thin black stroke for depth
